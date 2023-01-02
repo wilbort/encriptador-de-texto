@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="styles.css">
+    <title>Encriptador de texto | WilbortER</title>
+</head>
+<body>
+    <header>
+        <img src="./assets/logo.svg" alt="Logo Alura">
+    </header>
+    <main>
+        <div class="texto">
+            <textarea id="input" placeholder="Ingrese el texto aquí"></textarea>
+            <p class="advertencia">&#9888; Solo letras minúsculas y sin tildes.</p>
+            <div class="buttons">
+                <button disabled id="encriptar" class="btn">Encriptar</button>
+                <button disabled id="desencriptar" class="btn">Desencriptar</button>
+            </div>
+        </div>
+        <div class="resultado">
+            <div class="container">
+                <img id="imagen" class="hidden" src="./assets/muñeco.png" alt="">
+                <p id="resultado-title" class="title">Ningún mensaje fue encontrado</p>
+                <p id="resultado-subtitle" class="subtitle">Ingresa el texto que dessen encriptar o desencriptar.</p>
+                <p id="resultado" class="resultado-texto hidden">Lorem.</p>
+                <button id="copy" class="copy hidden">Copiar</button>
+            </div>
+        </div>
+        
+    </main>
+    <footer>
+        <p>Desarrollado por <a href="https://github.com/wilbort/">WilbortER</a></p>
+    </footer>
+    <script src="./script.js"></script>
+</body>
+</html>
