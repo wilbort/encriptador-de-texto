@@ -5,11 +5,11 @@ const botonCopiar = document.querySelector('#copy');
 const resultado = document.querySelector('#resultado');
 
 // Claves de encriptación
-const a = 'ai';
-const e = 'enter';
-const i = 'imes';
-const o = 'ober';
-const u = 'ufat';
+const letraA = 'ai';
+const letraE = 'enter';
+const letraI = 'imes';
+const letraO = 'ober';
+const letraU = 'ufat';
 
 input.addEventListener('input', detectarInput);
 botonEncriptar.addEventListener('click', encriptarTexto);
@@ -60,19 +60,19 @@ function encriptarTexto () {
     for (let x=0; x<texto.length; x++) {
         switch (texto[x]) {
             case 'a':
-                cifrado = cifrado + a;
+                cifrado = cifrado + letraA;
                 break;
             case 'e':
-                cifrado = cifrado + e;
+                cifrado = cifrado + letraE;
                 break;
             case 'i':
-                cifrado = cifrado + i;
+                cifrado = cifrado + letraI;
                 break;
             case 'o':
-                cifrado = cifrado + o;
+                cifrado = cifrado + letraO;
                 break;
             case 'u':
-                cifrado = cifrado + u;
+                cifrado = cifrado + letraU;
                 break;
             default:
                 cifrado = cifrado + texto[x];
@@ -91,24 +91,44 @@ function desencriptarTexto () {
     for (let x=0; x<texto.length; x++) {
         switch (texto[x]) {
             case 'a':
-                cifrado = cifrado + 'a';
-                x = x + (a.length - 1);
+                if (estaCrifrado(letraA, x)) {
+                    cifrado = cifrado + 'a';
+                    x = x + (letraA.length - 1);
+                } else {
+                    cifrado = cifrado + texto[x];
+                }
                 break;
             case 'e':
-                cifrado = cifrado + 'e';
-                x = x + (e.length - 1);
+                if (estaCrifrado(letraE, x)) {
+                    cifrado = cifrado + 'e';
+                    x = x + (letraE.length - 1);
+                } else {
+                    cifrado = cifrado + texto[x];
+                }
                 break;
             case 'i':
-                cifrado = cifrado + 'i';
-                x = x + (i.length - 1);
+                if (estaCrifrado(letraI, x)) {
+                    cifrado = cifrado + 'i';
+                    x = x + (letraI.length - 1);
+                } else {
+                    cifrado = cifrado + texto[x];
+                }
                 break;
             case 'o':
-                cifrado = cifrado + 'o';
-                x = x + (o.length - 1);
+                if (estaCrifrado(letraO, x)) {
+                    cifrado = cifrado + 'o';
+                    x = x + (letraO.length - 1);
+                } else {
+                    cifrado = cifrado + texto[x];
+                }
                 break;
             case 'u':
-                cifrado = cifrado + 'u';
-                x = x + (u.length - 1);
+                if (estaCrifrado(letraU, x)) {
+                    cifrado = cifrado + 'u';
+                    x = x + (letraU.length - 1);
+                } else {
+                    cifrado = cifrado + texto[x];
+                }
                 break;
             default:
                 cifrado = cifrado + texto[x];
@@ -116,4 +136,20 @@ function desencriptarTexto () {
         }
     }
     resultado.textContent = cifrado;
+    cifrado = "";
+}
+function estaCrifrado (letraEvaluada, posicion) {
+    let palabra = input.value;
+    let textoTemporal = [];
+    let pos = posicion;
+
+    for (let i=0;i<letraEvaluada.length;i++) {
+        textoTemporal = textoTemporal + palabra[pos];
+        pos++;
+    }
+    if (textoTemporal === letraEvaluada) {
+        return 1;
+    } else {
+        return 0;
+    }
 }
